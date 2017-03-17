@@ -11,7 +11,7 @@ echo "Repo resource folder is [${REPO_RESOURCE}]"
 echo "Tools resource folder is [${TOOLS_RESOURCE}]"
 echo "Version resource folder is [${VERSION_RESOURCE}]"
 
-source ${ROOT_FOLDER}/${TOOLS_RESOURCE}/concourse/tasks/pipeline.sh
+source ./pipeline.sh
 
 M2_LOCAL=${ROOT_FOLDER}/${M2_REPO}/repository
 echo "Changing the maven local to [${M2_LOCAL}]"

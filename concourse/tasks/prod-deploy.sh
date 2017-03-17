@@ -13,7 +13,7 @@ echo "Repo resource folder is [${REPO_RESOURCE}]"
 echo "Tools resource folder is [${TOOLS_RESOURCE}]"
 echo "Version resource folder is [${VERSION_RESOURCE}]"
 
-source ${ROOT_FOLDER}/${TOOLS_RESOURCE}/concourse/tasks/pipeline.sh
+source ./pipeline.sh
 
 echo "Deploying the built application on prod environment"
 cd ${ROOT_FOLDER}/${REPO_RESOURCE}
