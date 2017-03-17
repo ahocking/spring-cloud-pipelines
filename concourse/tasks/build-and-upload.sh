@@ -42,7 +42,7 @@ elif [[ "${PROJECT_TYPE}" == "GRADLE" ]]; then
     fi
 else
     echo "Unsupported project build tool"
-    return 1
+    exit 1
 fi
 #-------------------------------
 
