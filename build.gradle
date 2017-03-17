@@ -19,11 +19,6 @@ task generateMainReadme(type: JRubyExec) {
 	scriptArgs "-i ${projectDir}/docs/README.adoc", "-o ${projectDir}/README.adoc"
 }
 
-task generateJenkinsReadme(type: JRubyExec) {
-	script "${projectDir}/tools/coalesce-readme.rb"
-	scriptArgs "-i ${projectDir}/docs/JENKINS.adoc", "-o ${projectDir}/jenkins/README.adoc"
-}
-
 task generateConcourseReadme(type: JRubyExec) {
 	script "${projectDir}/tools/coalesce-readme.rb"
 	scriptArgs "-i ${projectDir}/docs/CONCOURSE.adoc", "-o ${projectDir}/concourse/README.adoc"

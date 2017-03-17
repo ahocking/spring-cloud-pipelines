@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -o errexit
+
 export ROOT_FOLDER=$( pwd )
 export REPO_RESOURCE=repo
 export TOOLS_RESOURCE=tools
@@ -26,5 +28,25 @@ if [[ -z "${LATEST_PROD_TAG}" || "${LATEST_PROD_TAG}" == "master" ]]; then
     echo "No prod release took place - skipping this step"
 else
     git checkout "${LATEST_PROD_TAG}"
-    . ${SCRIPTS_OUTPUT_FOLDER}/test_rollback_smoke.sh
+
+
+    #-----------------------------------
+    __DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+    [[ -f "${__DIR}/pipeline.sh" ]] && source "${__DIR}/pipeline.sh" || \
+        echo "No pipeline.sh found"
+
+    echo "Application URL [${APPLICATION_URL}]"
+    echo "StubRunner URL [${STUBRUNNER_URL}]"
+    echo "Latest production tag [${LATEST_PROD_TAG}]"
+
+    if [[ -z "${LATEST_PROD_TAG}" || "${LATEST_PROD_TAG}" == "master" ]]; then
+        echo "No prod release took place - skipping this step"
+    else
+        LATEST_PROD_VERSION=$( extractVersionFromProdTag ${LATEST_PROD_TAG} )
+        echo "Last prod version equals ${LATEST_PROD_VERSION}"
+        runSmokeTests ${APPLICATION_URL} ${STUBRUNNER_URL}
+    fi
+    #-------------------------------
+
 fi
