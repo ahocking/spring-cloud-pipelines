@@ -13,17 +13,17 @@ echo "Repo resource folder is [${REPO_RESOURCE}]"
 echo "Tools resource folder is [${TOOLS_RESOURCE}]"
 echo "Version resource folder is [${VERSION_RESOURCE}]"
 
-#source ${ROOT_FOLDER}/${TOOLS_RESOURCE}/concourse/tasks/pipeline.sh
+source ${ROOT_FOLDER}/${TOOLS_RESOURCE}/concourse/tasks/pipeline.sh
 
 echo "Building and uploading the projects artifacts"
 cd ${ROOT_FOLDER}/${REPO_RESOURCE}
 
 #-------------------------------
 
-__DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-[[ -f "${__DIR}/pipeline.sh" ]] && source "${__DIR}/pipeline.sh" || \
-    echo "No pipeline.sh found"
+#__DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+#
+#[[ -f "${__DIR}/pipeline.sh" ]] && source "${__DIR}/pipeline.sh" || \
+#    echo "No pipeline.sh found"
 
 echo "Additional Maven Args [${MAVEN_ARGS}]"
 
